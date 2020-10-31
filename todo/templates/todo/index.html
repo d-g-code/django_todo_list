@@ -10,12 +10,14 @@
         {{ form.text }}
         <button type="submit" id="add-btn">Add</button>
     </form>
+    <a href="{% url 'deletecomplete' %}"><button type="button">Delete Complete</button></a>
+    <a href="{% url 'deleteall' %}"><button type="button">Delete All</button></a>
 
     {% for todo in todo_list %}
         {% if todo.complete %}
             {{ todo.text }}
         {% else %}
-            <a href="{% url 'complete' todo.id %}">{{ todo.text }}</a> 
+            <a href="{% url 'complete' todo.id %}">{{ todo.text }}</a>
         {% endif %}
     {% endfor %}
 </body>
