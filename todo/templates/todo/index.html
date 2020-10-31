@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+</head>
+<body>
+    <form action="{% url 'add' %}" method="POST">
+        {% csrf_token %}
+        {{ form.text }}
+        <button type="submit" id="add-btn">Add</button>
+    </form>
+
+    {% for todo in todo_list %}
+        {% if todo.complete %}
+            {{ todo.text }}
+        {% else %}
+            <a href="{% url 'complete' todo.id %}">{{ todo.text }}</a> 
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
